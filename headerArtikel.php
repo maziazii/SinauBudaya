@@ -76,7 +76,7 @@ $row = mysqli_fetch_array($prevQuery, MYSQLI_ASSOC);
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #001D23">
     <!-- Brand Logo -->
-    <a href="index.php" class="navbar-brand ms-4 ms-lg-0" style="margin-left: 0;">
+    <a href="admin.php" class="navbar-brand ms-4 ms-lg-0" style="margin-left: 0;">
       <div style="display: flex; align-items: center; justify-content: flex-start; padding-left: 10px;">
         <img src="img/LogoSinauBudaya.png" alt="" style="width: 60px; height: 60px; margin-right: 2px;">
         <h3 class="fw-bold m-0" style="margin-left: 10px; color: #FE6F0F"><b>Sinau</b><span class="text-white"><b>Budaya</b></span></h3>
@@ -117,7 +117,7 @@ $row = mysqli_fetch_array($prevQuery, MYSQLI_ASSOC);
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-           <a href="#" class="nav-link active" style="background-color: #FE6F0f ; color: white;">
+           <a href="admin.php" class="nav-link active" style="background-color: #FE6F0f ; color: white;">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -125,6 +125,14 @@ $row = mysqli_fetch_array($prevQuery, MYSQLI_ASSOC);
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="admin.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Dashboard
+                  </p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="wisataAdmin.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

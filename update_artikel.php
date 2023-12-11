@@ -15,7 +15,7 @@ include "headerArtikel.php";
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
               <li class="breadcrumb-item"><a href="artikelAdmin.php">Artikel</a></li>
-              <li class="breadcrumb-item active">Add Artikel</li>
+              <li class="breadcrumb-item active">Edit Artikel</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,7 +31,7 @@ include "headerArtikel.php";
           <div class="col-md-12">
              <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Form Tambah Artikel</h3>
+                  <h3 class="card-title">Form Edit Artikel</h3>
                 </div>
                 <div class="card-body">
 
@@ -53,7 +53,7 @@ include "headerArtikel.php";
                   <div class="form-group row">
                     <div class="col-sm-2 col-form-label">
                       <label for="exampleInputFile">File input</label></div><div class="col-sm-10">
-                      <input   type="file" id="exampleInputFile" name="fileToUpload" >
+                      <input type="file" id="exampleInputFile" name="fileToUpload" >
                       <p class="help-block"><?php echo $row['foto_artikel']; ?></p>
                       <label  style=" color:red"class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> File Max 1 mb (Wajib dalam format PNG/ JPG)</label>\
                     </div>

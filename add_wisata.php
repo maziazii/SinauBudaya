@@ -14,8 +14,8 @@ include "headerWisata.php";
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
-              <li class="breadcrumb-item"><a href="artikelAdmin.php"> Wisata</a></li>
-              <li class="breadcrumb-item active">Add Wisata</li>
+              <li class="breadcrumb-item"><a href="wisataAdmin.php"> Wisata</a></li>
+              <li class="breadcrumb-item active">Tambah Wisata</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

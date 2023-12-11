@@ -9,12 +9,12 @@ include "headerLokasi.php";
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Lokasi</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
-              <li class="breadcrumb-item active">ARTIKEL</li>
+              <li class="breadcrumb-item active">Lokasi</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -44,7 +44,7 @@ include "headerLokasi.php";
           <div class="col-md-12">
                          <div class="card">
                            <div class="card-header">
-                             <h3 class="card-title">Daftar Artikel</h3>
+                             <h3 class="card-title">Daftar Lokasi</h3>
                            </div>
                            <div class="card-body">
                            <table id="example1" class="table table-bordered table-striped">
@@ -57,7 +57,6 @@ include "headerLokasi.php";
                                </tr>
                              </thead>
                              <tbody>
-
                                 <?php
                                 $nomor = 1;
                                 $result = mysqli_query($conn, "SELECT * FROM regional ORDER BY id_regional DESC");
@@ -76,7 +75,7 @@ include "headerLokasi.php";
                              </tbody>
                            </table>
                          </div>
-                         </div>
+                        </div>
                        </div>
 
         </div>
@@ -130,8 +129,8 @@ include "headerLokasi.php";
          "info": false,
          "autoWidth": false,
          "responsive": false,
-         "scrollX": false,
-         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+         "scrollX": true,
+         "buttons": ["copy", "csv", "excel", "pdf", "print"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
   });

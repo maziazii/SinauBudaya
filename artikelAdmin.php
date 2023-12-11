@@ -9,12 +9,12 @@ include "headerArtikel.php";
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Artikel</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
-              <li class="breadcrumb-item active">ARTIKEL</li>
+              <li class="breadcrumb-item active">Artikel</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -56,7 +56,6 @@ include "headerArtikel.php";
                                </tr>
                              </thead>
                              <tbody>
-
                                 <?php
                                 $nomor = 1;
                                 $result = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id_artikel DESC");
@@ -71,7 +70,7 @@ include "headerArtikel.php";
                                       echo strlen($deskripsi) > 100 ? substr($deskripsi, 0, 100) . ' ...' : $deskripsi;
                                       ?>
                                     </td>
-                                    <td><?php echo $row['foto_artikel']; ?></td>
+                                    <td><img src="img/artikel/<?php echo $row['foto_artikel']; ?>" alt="Artikel Image" style="max-width: 100px; max-height: 100px;"></td>
                                     <td><?php echo $row['tanggal_artikel']; ?></td>
                                     <td><?php echo $row['penulis_artikel']; ?></td>
                                     <td><a style="color: white;" href="update_artikel.php?id=<?php echo $row['id_artikel'];?>" ><button class="btn btn-primary btn-sm">Edit</button></a></td>
@@ -137,14 +136,11 @@ include "headerArtikel.php";
         "searching": true,
         "ordering": true,
         "info": false,
-        "autoWidth": true, // Updated to true
+        "autoWidth": false, // Updated to true
         "responsive": false,
         "scrollX": true, // Updated to true
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    });
-
-    // Adjust column widths dynamically
-    table.columns.adjust().draw();
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
 </script>
 </body>

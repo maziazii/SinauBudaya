@@ -7,7 +7,7 @@ include "koneksi.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DITAIL WISATA PAMERAN</title>
+    <title>SinauBudaya-WisataPameran</title>
     <link rel="stylesheet" href="./css/style.css">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
@@ -48,7 +48,7 @@ include "koneksi.php";
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s" >
           <a href="index.php" class="navbar-brand ms-4 ms-lg-0" style="margin-left: 0;">
             <div style="display: flex; align-items: center; justify-content: flex-start; padding-left: 10px;">
-              <img src="img/LogoSinauBudaya.png" alt="" style="width: 75px; height: 75px; margin-right: 0px;">
+              <img src="img/LogoSinauBudaya.png" alt="" style="width: 54px; height: 54px; margin-right: 0px;">
               <h1 class="fw-bold text-primary m-0" style="margin-left: 10px;">Sinau<span class="text-white">Budaya</span></h1>
             </div>
           </a>

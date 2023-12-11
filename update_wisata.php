@@ -9,13 +9,13 @@ include "headerWisata.php";
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Artikel</h1>
+            <h1 class="m-0">Wisata</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
-              <li class="breadcrumb-item"><a href="artikelAdmin.php">Artikel</a></li>
-              <li class="breadcrumb-item active">Add Artikel</li>
+              <li class="breadcrumb-item"><a href="wisataAdmin.php">Wisata</a></li>
+              <li class="breadcrumb-item active">Edit Wisata</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,46 +31,110 @@ include "headerWisata.php";
           <div class="col-md-12">
              <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Form Tambah Artikel</h3>
+                  <h3 class="card-title">Form Edit Wisata</h3>
                 </div>
                 <div class="card-body">
 
                 <?php
-                $result = mysqli_query($conn, "SELECT * FROM `artikel` ORDER BY id_artikel DESC");
-                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                $id_pameran = $_GET['id'];
+                $result = mysqli_query($conn, "SELECT * FROM `pameran` WHERE id_pameran = $id_pameran");
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);                
                 ?>
-
-                <form role="form" method="POST" action="proses_update_artikel.php" enctype="multipart/form-data">
+                               
+                <form method="POST" action="proses_update_wisata.php" enctype="multipart/form-data">
                   <div class="form-group row">
                     <div class="col-sm-2 col-form-label"><label for="exampleInputJudul">Judul</label></div>
-                    <div class="col-sm-10"> <input  required type="text" class="form-control" id="Judul" placeholder="Masukan Judul Artikel" name="judul_artikel" value="<?php echo $row ['judul_artikel']; ?>"></div>
+                    <div class="col-sm-10"> <input  required type="text" class="form-control" id="Judul" placeholder="Masukan Judul Wisata" name="judul_pameran" value="<?php echo $row ['judul_pameran']; ?>"></div>
                   </div>
-                  <input  required type="hidden" class="form-control" name="id_artikel" value="<?php echo $row ['id_artikel']; ?>">
+                  <input type="hidden" class="form-control" name="id_pameran" value="<?php echo $row['id_pameran']; ?>">
+                  <div class="form-group row">
+                    <div class="col-sm-2 col-form-label"><label for="exampleInputDeskripsi">Deskripsi</label></div><div class="col-sm-10"> <textarea required class="form-control" id="Deskrisi" placeholder="Masukan Deskripsi Wisata" name="deskripsi_pameran"><?php echo $row ['deskripsi_pameran']; ?></textarea></div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-2 col-form-label"><label for="exampleInputHTM">HTM</label></div>
+                    <div class="col-sm-10"> <input  required type="text" class="form-control" id="HTM" placeholder="Masukan Harga Tiket Masuk" name="htm_pameran" value="<?php echo $row ['htm_pameran']; ?>"></div>
+                  </div>
                   <div class="form-group row">
                     <div class="col-sm-2 col-form-label">
-                    <label for="exampleInputIsi">Deskripsi</label></div><div class="col-sm-10"> <textarea required class="form-control" id="Deskripsi" placeholder="Masukan Isi Artikel" name="deskripsi_artikel"><?php echo $row ['deskripsi_artikel']; ?></textarea></div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-sm-2 col-form-label">
-                      <label for="exampleInputFile">File input</label></div><div class="col-sm-10">
-                      <input   type="file" id="exampleInputFile" name="fileToUpload" >
-                      <p class="help-block"><?php echo $row['foto_artikel']; ?></p>
-                      <label  style=" color:red"class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> File Max 1 mb (Wajib dalam format PNG/ JPG)</label>\
+                      <label for="exampleInputFile">Foto</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input type="file" id="exampleInputFile" name="fileToUpload" >
+                      <p class="help-block"><?php echo $row['foto_pameran']; ?>
+                      <label  style=" color:red"class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> File Max 1 mb (Wajib dalam format PNG/ JPG)</label>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="reservationdate" class="col-sm-2 col-form-label">Tanggal</label>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2 col-form-label"><label for="exampleInputLokasi">Lokasi</label></div>
+                    <div class="col-sm-10"> <input  required type="text" class="form-control" id="Lokasi" placeholder="Masukan Lokasi Wisata" name="lokasi_pameran" value="<?php echo $row ['lokasi_pameran']; ?>"></div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-2 col-form-label"><label for="exampleInputWaktu">Waktu</label></div>
+                    <div class="col-sm-10"> <input  required type="text" class="form-control" id="Waktu" placeholder="Masukan Waktu Berlangsungnya" name="waktu_pameran" value="<?php echo $row ['waktu_pameran']; ?>"></div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-2 col-form-label"><label for="exampleInputTgl">Tanggal</label></div>
+                    <div class="col-sm-10">
                       <div class="input-group date" id="reservationdate" data-target-input="nearest">
                         <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
-                        <input required type="text" class="form-control datepicker" name="tanggal_artikel" value="<?php echo date("m/d/Y", strtotime($row['tanggal_artikel'])); ?>">
+                        <input type="text" class="form-control datetimepicker-input" name="tanggal_pameran" value="<?php echo date("m/d/Y", strtotime($row['tanggal_pameran'])); ?>">
                       </div>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <div class="col-sm-2 col-form-label"><label for="exampleInputPenulis">Penulis</label></div><div class="col-sm-10"> <input  required type="text" class="form-control" id="Penulis" placeholder="Masukan Nama Artikel" name="penulis_artikel" value="<?php echo $row ['penulis_artikel']; ?>"></div>
+                    <div class="col-sm-2 col-form-label"><label for="exampleInputKategori">Kategori</label></div>
+                    <div class="col-sm-10">
+                      <select name="nama_kategori" class="form-control select2" placeholder="Pilih Kategori">
+                        <?php
+
+                        $gets_kategori = mysqli_query($conn, "SELECT group_concat(k.id_kategori) as id_kategori FROM kategori k join pameran p on(k.id_kategori=p.id_kategori) where p.id_pameran='" . 	
+                        $row['id_pameran'] . "'");
+                        $baris_kategori = mysqli_fetch_array($gets_kategori, MYSQLI_ASSOC);
+                        $data_kategori = $baris_kategori['id_kategori'];
+                        $kategori_lain = explode(',', $data_kategori);
+                        
+                        $results_kategori = mysqli_query($conn, "SELECT * FROM kategori");
+                        $option_kategori = '';
+                        while ($row_kategori = mysqli_fetch_array($results_kategori, MYSQLI_ASSOC)) {
+                            if (ucwords($_SESSION['nama_kategori']) == ucwords($row_kategori['nama_kategori'])) {
+                                $option_kategori .= '<option disabled value="' . $row_kategori['id_kategori'] . '">' . $row_kategori['nama_kategori'] . '</option>';
+                            } else {
+                                $selected = (in_array($row_kategori['id_kategori'], $kategori_lain)) ? "selected" : "";
+                                $option_kategori .= '<option value="' . $row_kategori['id_kategori'] . '" ' . $selected . '>' . $row_kategori['nama_kategori'] . ' </option>';
+                            }
+                        }
+                        echo $option_kategori;
+                        ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-2 col-form-label"><label for="exampleInputRegional">Regional</label></div>
+                    <div class="col-sm-10">
+                      <select name="nama_regional" class="form-control select2" data-placeholder="Pilih Regional">
+                        <?php
+
+                        $gets_regional = mysqli_query($conn, "SELECT group_concat(r.id_regional) as id_regional FROM regional r join pameran p on(r.id_regional=p.id_regional) where p.id_pameran='" . $row['id_pameran'] . "'");
+                        $baris_regional = mysqli_fetch_array($gets_regional, MYSQLI_ASSOC);
+                        $data_regional = $baris_regional['id_regional'];
+                        $regional_lain = explode(',', $data_regional);
+
+                        $results_regional = mysqli_query($conn, "SELECT * FROM regional");
+                        $option_regional = '';
+                        while ($row_regional = mysqli_fetch_array($results_regional, MYSQLI_ASSOC)) {
+                            if (ucwords($_SESSION['nama_regional']) == ucwords($row_regional['nama_regional'])) {
+                                $option_regional .= '<option disabled value="' . $row_regional['id_regional'] . '">' . $row_regional['nama_regional'] . '</option>';
+                            } else {
+                                $selected = (in_array($row_regional['id_regional'], $regional_lain)) ? "selected" : "";
+                                $option_regional .= '<option value="' . $row_regional['id_regional'] . '" ' . $selected . '>' . $row_regional['nama_regional'] . ' </option>';
+                            }
+                        }
+                        echo $option_regional;
+                        ?>
+                      </select>
+                    </div>
                   </div>
                   <div class="col-sm-10 mx-auto text-center">
                     <button type="submit" class="btn btn-warning btn-block" style="background-color: #FE6F0F; border-color: #FE6F0F;"><b>Submit</b></button>

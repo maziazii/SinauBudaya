@@ -15,7 +15,7 @@ include "headerArtikel.php";
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
               <li class="breadcrumb-item"><a href="artikelAdmin.php"> Artikel</a></li>
-              <li class="breadcrumb-item active">Add Berita</li>
+              <li class="breadcrumb-item active">Tambah Artikel</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -60,7 +60,6 @@ include "headerArtikel.php";
                                   <div class="col-sm-2 col-form-label"><label for="exampleInputTgl">Tanggal</label></div>
                                     <div class="col-sm-10">
                                       <div class="input-group date" id="reservationdate" data-target-input="nearest">
-
                                         <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>

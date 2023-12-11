@@ -9,13 +9,13 @@ include "headerLokasi.php";
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Artikel</h1>
+            <h1 class="m-0">Lokasi</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
-              <li class="breadcrumb-item"><a href="artikelAdmin.php">Artikel</a></li>
-              <li class="breadcrumb-item active">Add Artikel</li>
+              <li class="breadcrumb-item"><a href="artikelAdmin.php">Lokasi</a></li>
+              <li class="breadcrumb-item active">Edit Lokasi</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,51 +31,26 @@ include "headerLokasi.php";
           <div class="col-md-12">
              <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Form Tambah Artikel</h3>
+                  <h3 class="card-title">Form Edit Lokasi</h3>
                 </div>
                 <div class="card-body">
-
+                
                 <?php
-                $result = mysqli_query($conn, "SELECT * FROM `artikel` ORDER BY id_artikel DESC");
+                $result = mysqli_query($conn, "SELECT * FROM `regional` ORDER BY id_regional DESC");
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 ?>
-
-                <form role="form" method="POST" action="proses_update_artikel.php" enctype="multipart/form-data">
+                <form method="POST" action="proses_update_lokasi.php" enctype="multipart/form-data">
                   <div class="form-group row">
-                    <div class="col-sm-2 col-form-label"><label for="exampleInputJudul">Judul</label></div>
-                    <div class="col-sm-10"> <input  required type="text" class="form-control" id="Judul" placeholder="Masukan Judul Artikel" name="judul_artikel" value="<?php echo $row ['judul_artikel']; ?>"></div>
+                    <div class="col-sm-2 col-form-label"><label for="exampleInputLokasi">Lokasi</label></div>
+                    <div class="col-sm-10"> <input  required type="text" class="form-control" id="Lokasi" placeholder="Masukan Lokasi Wisata" name="nama_regional" value="<?php echo $row ['nama_regional']; ?>"></div>
                   </div>
-                  <input  required type="hidden" class="form-control" name="id_artikel" value="<?php echo $row ['id_artikel']; ?>">
-                  <div class="form-group row">
-                    <div class="col-sm-2 col-form-label">
-                    <label for="exampleInputIsi">Deskripsi</label></div><div class="col-sm-10"> <textarea required class="form-control" id="Deskripsi" placeholder="Masukan Isi Artikel" name="deskripsi_artikel"><?php echo $row ['deskripsi_artikel']; ?></textarea></div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-sm-2 col-form-label">
-                      <label for="exampleInputFile">File input</label></div><div class="col-sm-10">
-                      <input   type="file" id="exampleInputFile" name="fileToUpload" >
-                      <p class="help-block"><?php echo $row['foto_artikel']; ?></p>
-                      <label  style=" color:red"class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> File Max 1 mb (Wajib dalam format PNG/ JPG)</label>\
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="reservationdate" class="col-sm-2 col-form-label">Tanggal</label>
-                    <div class="col-sm-4">
-                      <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        </div>
-                        <input required type="text" class="form-control datepicker" name="tanggal_artikel" value="<?php echo date("m/d/Y", strtotime($row['tanggal_artikel'])); ?>">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-sm-2 col-form-label"><label for="exampleInputPenulis">Penulis</label></div><div class="col-sm-10"> <input  required type="text" class="form-control" id="Penulis" placeholder="Masukan Nama Artikel" name="penulis_artikel" value="<?php echo $row ['penulis_artikel']; ?>"></div>
-                  </div>
+                  <input type="hidden" class="form-control" name="id_regional" value="<?php echo $row['id_regional']; ?>">
+                  <div class="col-sm-10 mx-auto text-center">
                   <div class="col-sm-10 mx-auto text-center">
                     <button type="submit" class="btn btn-warning btn-block" style="background-color: #FE6F0F; border-color: #FE6F0F;"><b>Submit</b></button>
                   </div>
                 </form>
+
               </div>
             </div>
           </div>

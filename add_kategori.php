@@ -15,7 +15,7 @@ include "headerKategori.php";
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
               <li class="breadcrumb-item"><a href="artikelAdmin.php">Kategori</a></li>
-              <li class="breadcrumb-item active">Add Kategori</li>
+              <li class="breadcrumb-item active">Tambah Kategori</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

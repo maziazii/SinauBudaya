@@ -9,12 +9,12 @@ include "headerWisata.php";
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Wisata</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
-              <li class="breadcrumb-item active">PAMERAN</li>
+              <li class="breadcrumb-item active">Wisata</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -44,7 +44,7 @@ include "headerWisata.php";
           <div class="col-md-12">
                          <div class="card">
                            <div class="card-header">
-                             <h3 class="card-title">Daftar Pameran</h3>
+                             <h3 class="card-title">Daftar Wisata</h3>
                            </div>
                            <div class="card-body">
                            <table id="example1" class="table table-bordered table-striped">
@@ -58,47 +58,62 @@ include "headerWisata.php";
                                  <th> LOKASI</th>
                                  <th> WAKTU</th>
                                  <th> TANGGAL</th>
-                                 <th> ID KATEGORI</th>
-                                 <th> ID PAMERAN</th>
+                                 <th> KATEGORI</th>
+                                 <th> REGIONAL</th>
                                  <th> EDIT</th>
                                  <th> DELETE</th>
                                </tr>
-                             </thead>
-
-  <?php
-  $nomor = 1;
-  $result = mysqli_query($conn, "SELECT * FROM pameran ORDER BY id_pameran DESC");
-  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-  ?>
-    <tr>
-      <td><?php echo $nomor; ?></td>
-      <td><?php echo $row['judul_pameran']; ?></td>
-      <td>
-        <?php
-        $deskripsi = $row['deskripsi_pameran'];
-        echo strlen($deskripsi) > 100 ? substr($deskripsi, 0, 100) . ' ...' : $deskripsi;
-        ?>
-      </td>
-      <td><?php echo $row['htm_pameran']; ?></td>
-      <td><?php echo $row['foto_pameran']; ?></td>
-      <td><?php echo $row['lokasi_pameran']; ?></td>
-      <td><?php echo $row['waktu_pameran']; ?></td>
-      <td><?php echo $row['tanggal_pameran']; ?></td>
-      <td><?php echo $row['id_kategori']; ?></td>
-      <td><?php echo $row['id_regional']; ?></td>
-      <td><a style="color: white;" href="update_wisata.php?id=<?php echo $row['id_pameran'];?>"><button class="btn btn-primary btn-sm">Edit</button></a></td>
-    <td><a style="color: white;" href="proses_hapus_wisata.php?id=<?php echo $row['id_pameran'];?>"><button class="btn btn-danger btn-sm">Remove</button></a></td>
-    </tr>
-  <?php
-    $nomor = $nomor + 1; }
-?>
-                             </tbody>
+                              </thead>
+                              <tbody>
+                              <?php
+                                $nomor = 1;
+                                $result = mysqli_query($conn, "SELECT * FROM pameran ORDER BY id_pameran DESC");
+                                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                                ?>
+                                  <tr>
+                                    <td><?php echo $nomor; ?></td>
+                                    <td><?php echo $row['judul_pameran']; ?></td>
+                                    <td>
+                                      <?php
+                                      $deskripsi = $row['deskripsi_pameran'];
+                                      echo strlen($deskripsi) > 100 ? substr($deskripsi, 0, 100) . ' ...' : $deskripsi;
+                                      ?>
+                                    </td>
+                                    <td><?php echo $row['htm_pameran']; ?></td>
+                                    <td><img src="img/wisata/<?php echo $row['foto_pameran']; ?>" alt="Wisata Image" style="max-width: 100px; max-height: 100px;"></td>
+                                    <td><?php echo $row['lokasi_pameran']; ?></td>
+                                    <td><?php echo $row['waktu_pameran']; ?></td>
+                                    <td><?php echo $row['tanggal_pameran']; ?></td>
+                                    <td>
+                                      <?php
+                                      $gets_kategori = mysqli_query($conn, "SELECT group_concat(nama_kategori) as nama_kategori FROM kategori k join pameran p on(k.id_kategori=p.id_kategori) where p.id_pameran='" . $row['id_pameran'] . "'");
+                                      $baris_kategori = mysqli_fetch_array($gets_kategori, MYSQLI_ASSOC);
+                                      $data_kategori = $baris_kategori['nama_kategori'];
+                                      $kategori_lain = explode(',', $data_kategori);
+                                      echo implode(', ', $kategori_lain);
+                                      ?>
+                                    </td>
+                                    <td>
+                                      <?php
+                                      $gets_regional = mysqli_query($conn, "SELECT group_concat(nama_regional) as nama_regional FROM regional r join pameran p on(r.id_regional=p.id_regional) where p.id_pameran='" . $row['id_pameran'] . "'");
+                                      $baris_regional = mysqli_fetch_array($gets_regional, MYSQLI_ASSOC);
+                                      $data_regional = $baris_regional['nama_regional'];
+                                      $regional_lain = explode(',', $data_regional);
+                                      echo implode(', ', $regional_lain);
+                                      ?>
+                                    </td>
+                                    <td><a style="color: white;" href="update_wisata.php?id=<?php echo $row['id_pameran'];?>"><button class="btn btn-primary btn-sm">Edit</button></a></td>
+                                  <td><a style="color: white;" href="proses_hapus_wisata.php?id=<?php echo $row['id_pameran'];?>"><button class="btn btn-danger btn-sm">Remove</button></a></td>
+                                  </tr>
+                                <?php
+                                  $nomor = $nomor + 1; }
+                              ?>
+                              </tbody>
                            </table>
                          </div>
                          </div>
                        </div>
-
-        </div>
+                      </div>
         <!-- /.row -->
         <!-- Main row -->
         <!-- /.row (main row) -->
@@ -149,8 +164,8 @@ include "headerWisata.php";
          "info": false,
          "autoWidth": false,
          "responsive": false,
-         "scrollX": false,
-         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+         "scrollX": true,
+         "buttons": ["copy", "csv", "excel", "pdf", "print"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
   });

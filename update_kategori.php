@@ -9,13 +9,13 @@ include "headerKategori.php";
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Artikel</h1>
+            <h1 class="m-0">Kategori</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
-              <li class="breadcrumb-item"><a href="artikelAdmin.php">Artikel</a></li>
-              <li class="breadcrumb-item active">Add Artikel</li>
+              <li class="breadcrumb-item"><a href="artikelAdmin.php">Kategori</a></li>
+              <li class="breadcrumb-item active">Edit Kategori</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,7 +31,7 @@ include "headerKategori.php";
           <div class="col-md-12">
              <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Form Tambah Artikel</h3>
+                  <h3 class="card-title">Form Edit Kategori</h3>
                 </div>
                 <div class="card-body">
 
@@ -40,12 +40,12 @@ include "headerKategori.php";
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 ?>
 
-                <form role="form" method="POST" action="proses_update_kategori.php" enctype="multipart/form-data">
+                <form method="POST" action="proses_update_kategori.php" enctype="multipart/form-data">
                   <div class="form-group row">
                     <div class="col-sm-2 col-form-label"><label for="exampleInputNama">Nama</label></div>
                     <div class="col-sm-10"> <input  required type="text" class="form-control" id="Nama" placeholder="Masukan Nama Kategori" name="nama_kategori" value="<?php echo $row ['nama_kategori']; ?>"></div>
                   </div>
-                  <input  required type="hidden" class="form-control" name="id_artikel" value="<?php echo $row ['id_kategori']; ?>">
+                  <input type="hidden" class="form-control" name="id_kategori" value="<?php echo $row['id_kategori']; ?>">
                   <div class="col-sm-10 mx-auto text-center">
                     <button type="submit" class="btn btn-warning btn-block" style="background-color: #FE6F0F; border-color: #FE6F0F;"><b>Submit</b></button>
                   </div>

@@ -28,56 +28,70 @@ include "headerDash.php";
         <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
+            <!-- WISATA small box -->
+            <div class="small-box" style="background-color:#0766AD">
+              <div class="inner" style="color:black">
+                <?php
+                $query = mysqli_query($conn, "SELECT COUNT(id_pameran) as jumlah FROM pameran");
+                $dataBerita = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                ?>
 
-                <p>New Orders</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="berita.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
+                <h3><?php echo $dataBerita['jumlah'];?></h3>
 
-                <p>User Registrations</p>
+                <p>Jumlah Wisata</p>
               </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="wisataAdmin.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-                <p>Unique Visitors</p>
+            <!-- LOKASI small box -->
+            <div class="small-box" style="background-color:#65B741">
+              <div class="inner" style="color:black">
+                <?php
+                $query = mysqli_query($conn, "SELECT COUNT(id_regional) as jumlah FROM regional");
+                $dataBerita = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                ?>
+
+                <h3><?php echo $dataBerita['jumlah'];?></h3>
+
+                <p>Jumlah Lokasi</p>
               </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+              <a href="lokasiAdmin.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- KATEGORI small box -->
+            <div class="small-box" style="background-color:#FFC436">
+              <div class="inner" style="color:black">
+                <?php
+                $query = mysqli_query($conn, "SELECT COUNT(id_kategori) as jumlah FROM kategori");
+                $dataBerita = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                ?>
+
+                <h3><?php echo $dataBerita['jumlah'];?></h3>
+
+                <p>Jumlah Kategori</p>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="kategoriAdmin.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- ARTIKEL small box -->
+            <div class="small-box" style="background-color:#FF6363">
+              <div class="inner" style="color:black">
+                <?php
+                $query = mysqli_query($conn, "SELECT COUNT(id_artikel) as jumlah FROM artikel");
+                $dataBerita = mysqli_fetch_array($query, MYSQLI_ASSOC);
+                ?>
+
+                <h3><?php echo $dataBerita['jumlah'];?></h3>
+
+                <p>Jumlah Artikel</p>
+              </div>
+              <a href="artikelAdmin.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
